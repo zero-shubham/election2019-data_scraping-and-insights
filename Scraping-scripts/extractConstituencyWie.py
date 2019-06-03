@@ -6,15 +6,19 @@ import csv
 driver = webdriver.Chrome(executable_path=ChromeDriverManager().install())
 driver.set_window_size(1120, 550)
 
+
 filename = "./data/pageDetails/state.txt"
 count = 0
 with open(filename, "r") as fstate:
+    # extracts code for each state
     for line in fstate:
         stateCode = line.split('-')[1].strip('\n')
         stateName = '_'.join((line.split('-')[0]).split(' '))
         file2name = "./data/pageDetails/constituencies/"+stateName+"txt"
+        # for each state extracts code for each constituency in that state
         with open(file2name, "r") as fcons:
-            for line in fcons:
+            for lineCon in fcons:
+                # builds the link with those extrcted codes
                 link = "http://results.eci.gov.in/pc/en/constituencywise/Constituencywise"+(stateCode+line.strip('\n'))+".htm?ac="+line.strip('\n')
                 driver.get(link)
                 table = driver.find_element_by_class_name("table-party")
@@ -28,7 +32,7 @@ with open(filename, "r") as fstate:
                     td = tr[i].find_elements_by_tag_name("td")
                     tableData.append([ x.text for x in td])
 
-                csvname = './data/constituencyWise2/'+stateName+'/'+csvn+'.csv'
+                csvname = './data/constituencyWise/'+stateName+'/'+csvn+'.csv'
                 os.makedirs(os.path.dirname(csvname), exist_ok=True)
 
                 with open(csvname, "w") as csvfile:
