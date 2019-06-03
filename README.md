@@ -1,1 +1,1 @@
-# election2019-data_scraping-and-insights
+# Scraped data from Election commission of India using Selenium and stored in CSV format.
