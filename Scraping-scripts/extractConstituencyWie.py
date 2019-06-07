@@ -19,7 +19,7 @@ with open(filename, "r") as fstate:
         with open(file2name, "r") as fcons:
             for lineCon in fcons:
                 # builds the link with those extrcted codes
-                link = "http://results.eci.gov.in/pc/en/constituencywise/Constituencywise"+(stateCode+line.strip('\n'))+".htm?ac="+line.strip('\n')
+                link = "http://results.eci.gov.in/pc/en/constituencywise/Constituencywise"+(stateCode+lineCon.strip('\n'))+".htm?ac="+lineCon.strip('\n')
                 driver.get(link)
                 table = driver.find_element_by_class_name("table-party")
                 tr = table.find_elements_by_tag_name("tr")
