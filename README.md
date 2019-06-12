@@ -3,3 +3,4 @@
 _Trying out concurrent approaches-_
  * Naive approach - 1336.9120118618011 seconds
  * Threaded approach with ThreadPoolExecutor - 425.9787459373474 seconds
+ * Threaded approach with Thread class - 480 seconds approx.
